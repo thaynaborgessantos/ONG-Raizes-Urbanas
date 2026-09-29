@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Raízes Urbanas</title>
+    <link rel="stylesheet" href="Design.css">
+</head>
+<body>
+    <header>
+        <h1>Cadastro</h1>
+        <nav class="menu-navegacao">
+            <button class="menu-toggle" id="menu-botao" aria-label="Abrir Menu">
+                ☰
+            </button>
+            <ul class="menu-lista" id="menu-lista">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="Cadastros.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="grid-container">
+        <form class="form-grid">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+                
+                <label for="CPF">CPF:</label>
+                <input type="text" id="CPF" name="CPF" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" pattern="\([0-9]{2}\)\s[0-9]{5}-[0-9]{4}" required>
+            
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento">
+                
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" min="18" max="120">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Dados Trabalhistas / Voluntariado</legend>
+                
+                <label for="cargo">Cargo / Função:</label>
+                <input type="text" id="cargo" name="cargo">
+                
+                <label for="data_cadastro">Data de Cadastro:</label>
+                <input type="date" id="data_cadastro" name="data_cadastro" required>
+            </fieldset>
+            
+            <button type="submit">Enviar Cadastro</button>
+        </form>
+    </main>
+
+    <footer>
+        <img src="assets/img/logo.jpeg" alt="Logotipo oficial da ONG Raízes Urbanas" width="150">
+        <p>&copy; 2026 Raízes Urbanas - Fundadora: Thayná Santos</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

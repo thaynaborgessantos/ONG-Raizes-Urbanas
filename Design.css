@@ -1,0 +1,367 @@
+:root {
+  /* --- Cores (8 cores distintas) --- */
+  --cor-primaria-verde: #2E7D32;       
+  --cor-primaria-clara: #4CAF50;       
+  --cor-secundaria-terra: #795548;     
+  --cor-secundaria-amarela: #FFB300;   
+  
+  --cor-neutra-dark: #212121;          
+  --cor-neutra-gray: #616161;          
+  --cor-neutra-light: #F9FBE7;         
+  --cor-neutra-white: #FFFFFF;         
+
+  /* --- Tipografia (5 patamares) --- */
+  --fonte-familia: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --tamanho-h1: 2.5rem;   
+  --tamanho-h2: 2.0rem;   
+  --tamanho-h3: 1.5rem;   
+  --tamanho-corpo: 1rem;  
+  --tamanho-pequeno: 0.875rem; 
+
+  /* --- Espaçamentos Modulares --- */
+  --espaco-xs: 4px;
+  --espaco-sm: 8px;
+  --espaco-md: 16px;
+  --espaco-lg: 24px;
+  --espaco-xl: 32px;
+  --espaco-xxl: 48px;
+}
+
+/* --- Aplicação Global --- */
+body {
+    font-family: var(--fonte-familia);
+    background-color: var(--cor-neutra-light);
+    color: var(--cor-neutra-dark);
+    margin: 0;
+    padding: var(--espaco-lg);
+}
+
+header {
+    background-color: var(--cor-primaria-verde);
+    color: var(--cor-neutra-white);
+    padding: var(--espaco-xxl);
+    text-align: center;
+    border-radius: var(--espaco-sm);
+    margin-bottom: var(--espaco-xl);
+}
+
+h1 {
+    font-size: var(--tamanho-h1);
+    margin: 0;
+}
+
+h2 {
+    font-size: var(--tamanho-h2);
+    color: var(--cor-primaria-verde);
+    margin-top: var(--espaco-xl);
+    margin-bottom: var(--espaco-sm);
+}
+
+p {
+    font-size: var(--tamanho-corpo);
+    color: var(--cor-neutra-dark);
+    line-height: 1.6;
+    margin-bottom: var(--espaco-md);
+}
+
+footer {
+    background-color: var(--cor-secundaria-terra);
+    color: var(--cor-neutra-white);
+    padding: var(--espaco-lg);
+    text-align: center;
+    font-size: var(--tamanho-pequeno);
+    border-radius: var(--espaco-sm);
+    margin-top: var(--espaco-xxl);
+}
+
+/* ==========================================================
+   SISTEMA GRID RESPONSIVO (12 Colunas & 5 Breakpoints)
+   ========================================================== */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espaco-md);
+    padding: var(--espaco-md);
+    justify-items: center;
+}
+
+.card-secao, .form-grid {
+    background-color: var(--cor-neutra-white);
+    padding: var(--espaco-lg);
+    border-radius: var(--espaco-sm);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- BREAKPOINT 1: Smartphones Maiores (min-width: 481px) --- */
+@media (min-width: 481px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-secao, .form-grid {
+        padding: var(--espaco-xl);
+    }
+}
+
+/* --- BREAKPOINT 2: Tablets Compactos (min-width: 769px) --- */
+@media (min-width: 769px) {
+    .grid-container {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    .card-secao {
+        grid-column: span 8;
+    }
+    .form-grid {
+        grid-column: span 8;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: var(--espaco-md);
+    }
+    .form-grid fieldset {
+        grid-column: span 8;
+    }
+    .form-grid button[type="submit"] {
+        grid-column: span 8;
+    }
+}
+
+/* --- BREAKPOINT 3: Desktops Padrão (min-width: 1025px) - 12 Colunas --- */
+@media (min-width: 1025px) {
+    .grid-container {
+        grid-template-columns: repeat(12, 1fr);
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: var(--espaco-lg);
+    }
+
+    .grid-container > section:nth-child(1) {
+        grid-column: 1 / -1; 
+    }
+
+    .grid-container > section:nth-child(n+2) {
+        grid-column: span 6;
+    }
+
+    .form-grid {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--espaco-md);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .form-grid fieldset:nth-of-type(1) {
+        grid-column: span 7;
+    }
+    .form-grid fieldset:nth-of-type(2) {
+        grid-column: span 5;
+    }
+    .form-grid fieldset label {
+        display: block;
+        margin-top: var(--espaco-sm);
+        margin-bottom: var(--espaco-xs);
+    }
+    .form-grid fieldset input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: var(--espaco-sm);
+        padding: var(--espaco-sm);
+        border: 1px solid var(--cor-neutra-gray);
+        border-radius: var(--espaco-xs);
+    }
+    .form-grid button[type="submit"] {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin-top: var(--espaco-md);
+    }
+}
+
+/* --- BREAKPOINT 4 & 5: Desktops Grandes --- */
+@media (min-width: 1441px) {
+    .grid-container {
+        max-width: 1400px;
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+/* --- Estilos Base do Menu --- */
+.menu-navegacao {
+    margin-top: var(--espaco-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    color: var(--cor-neutra-white);
+    border: 2px solid var(--cor-neutra-white);
+    font-size: 1.5rem;
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: var(--espaco-xs);
+    cursor: pointer;
+}
+
+.menu-lista {
+    list-style: none;
+    display: flex;
+    gap: var(--espaco-lg);
+    margin: 0;
+    padding: 0;
+}
+
+.menu-lista li a {
+    color: var(--cor-neutra-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--tamanho-corpo);
+}
+
+/* ==========================================================
+   REGRAS MOBILE (Ativadas em ecrãs com largura <= 768px)
+   ========================================================== */
+@media screen and (max-width: 768px) {
+    /* Mostra o botão hambúrguer */
+    .menu-toggle {
+        display: inline-block !important;
+    }
+
+    /* Oculta os links por padrão */
+    .menu-lista {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        background-color: var(--cor-primaria-verde);
+        padding: var(--espaco-md);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        gap: var(--espaco-md);
+        text-align: center;
+        z-index: 1000;
+        border-radius: var(--espaco-xs);
+    }
+
+    /* Exibe o menu quando o JS ativa a classe 'ativo' */
+    .menu-lista.ativo {
+        display: flex !important;
+    }
+}
+/* --- Componentes Interativos e Feedback --- */
+.form-grid button[type="submit"] {
+    background-color: var(--cor-primaria-verde);
+    color: var(--cor-neutra-white);
+    border: none;
+    padding: var(--espaco-md);
+    border-radius: var(--espaco-xs);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.form-grid button[type="submit"]:hover {
+    background-color: var(--cor-primaria-clara);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.form-grid button[type="submit"]:focus,
+.form-grid input:focus {
+    outline: none;
+    border-color: var(--cor-secundaria-amarela);
+    box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.3);
+}
+
+.form-grid button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+.form-grid input:user-invalid {
+    border-color: #D32F2F;
+}
+
+.form-grid input:user-valid {
+    border-color: var(--cor-primaria-verde);
+}
+
+.feedback-container {
+    background-color: var(--cor-neutra-white);
+    padding: var(--espaco-lg);
+    border-radius: var(--espaco-sm);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: var(--espaco-xl);
+    width: 100%;
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+}
+
+.alerta-sucesso {
+    background-color: var(--cor-neutra-light);
+    color: var(--cor-primaria-verde);
+    padding: var(--espaco-md);
+    border-left: 4px solid var(--cor-primaria-verde);
+    border-radius: var(--espaco-xs);
+    margin-bottom: var(--espaco-md);
+    font-size: var(--tamanho-corpo);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--cor-secundaria-amarela);
+    color: var(--cor-neutra-dark);
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: var(--espaco-xs);
+    font-size: var(--tamanho-pequeno);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: var(--espaco-sm);
+    margin-bottom: var(--espaco-sm);
+}
+
+.toast-notificacao {
+    background-color: var(--cor-neutra-dark);
+    color: var(--cor-neutra-white);
+    padding: var(--espaco-md);
+    border-radius: var(--espaco-sm);
+    font-size: var(--tamanho-pequeno);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-sm);
+}
+
+/* ==========================================================
+   REGRAS DE MOBILE (Colocadas rigorosamente no fim do ficheiro)
+   ========================================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block !important; 
+    }
+
+    .menu-lista {
+        display: none !important; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 250px;
+        background-color: var(--cor-primaria-verde);
+        padding: var(--espaco-md);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        gap: var(--espaco-md);
+        text-align: center;
+        z-index: 1000;
+        border-radius: var(--espaco-xs);
+    }
+
+    .menu-lista.ativo {
+        display: flex !important; 
+    }
+}
